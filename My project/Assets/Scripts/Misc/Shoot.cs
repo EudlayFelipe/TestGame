@@ -37,19 +37,19 @@ public class Shoot : MonoBehaviour
         RotateGun();
     }
 
-    void RotateGun()
+    void RotateGun() // rotaciona a arma se o player estiver virado para esquerda ou para direita e dependendo da posição do mouse
     {           
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float angle = Mathf.Atan2(mousePos.y - gun.gameObject.transform.position.y, mousePos.x - gun.gameObject.transform.position.x) * Mathf.Rad2Deg;
 
         if(!playerMovement.isFacingRight){
             angle += 180f;
-        }
-
-        gun.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));              
+        }        
+        
+        gun.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));                    
     }
 
-    void ShootBullet()
+    void ShootBullet() // atira
     {
         if(Input.GetMouseButton(0) && can_shoot)
         {

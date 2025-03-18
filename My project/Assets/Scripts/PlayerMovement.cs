@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 vecGravity;
     public float jumpStartTime;
     float jumpTime;
-    float coyoteTime = 0.2f;
+    float coyoteTime = 0.15f;
     float coyoteTimeCounter;
 
     float jumpBufferTime = 0.2f;

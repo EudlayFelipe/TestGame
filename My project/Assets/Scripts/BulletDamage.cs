@@ -5,7 +5,6 @@ public class BulletDamage : MonoBehaviour
     public float bullet_damage;  
 
     public ShakeData shootShakeData;
-
     public ParticleSystem groundColl_Particle;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,7 +23,7 @@ public class BulletDamage : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy"){
             collision.gameObject.GetComponent<EntityStats>().hp -= bullet_damage;
-            CameraShakerHandler.Shake(shootShakeData);
+            
             Destroy(gameObject);
         }
 
@@ -32,7 +31,8 @@ public class BulletDamage : MonoBehaviour
             Destroy(this.gameObject);
             ParticleSystem particleInstance = Instantiate(groundColl_Particle, transform.position, Quaternion.identity);
             particleInstance.Play();
-            Destroy(particleInstance, 3f);
+            Destroy(particleInstance, particleInstance.main.duration);
+           
         }
     }
 }

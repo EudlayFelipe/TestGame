@@ -10,12 +10,21 @@ public class SpawnManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        InvokeRepeating("SpawnEnemy", 5f, 5f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    void SpawnEnemy(){
+        foreach(GameObject sp in spawn_points)
+        {
+            int RandomEnemy = Random.Range(0,2);
+            Instantiate(enemies[RandomEnemy], sp.transform.position, Quaternion.identity);
+        }
+    }  
+   
 }

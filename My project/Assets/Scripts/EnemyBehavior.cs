@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
@@ -5,13 +6,13 @@ public class EnemyBehavior : MonoBehaviour
     public float enemy_speed;
 
     GameObject player_object;
-    Rigidbody2D rb_enemy;
+ 
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb_enemy = GetComponent<Rigidbody2D>();
+        
         player_object = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -23,6 +24,14 @@ public class EnemyBehavior : MonoBehaviour
 
     void FollowPlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player_object.transform.position, enemy_speed * Time.deltaTime) ;
+        Vector3 targetPos = new Vector3(player_object.transform.position.x, transform.position.y, transform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, enemy_speed * Time.deltaTime) ;
+
+        if(player_object.transform.position.x > transform.position.x){
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else{
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 }
