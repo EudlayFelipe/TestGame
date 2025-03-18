@@ -8,8 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Move")]
     public float move_speed;
     public float horizontalMove;
-    public bool isFacingRight;
-
+    
 
     [Header("Jump")]
     public float JumpForce;
@@ -17,6 +16,18 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     [SerializeField] private float fallMultiplier;
     Vector2 vecGravity;
+    public float jumpStartTime;
+    float jumpTime;
+    float coyoteTime = 0.2f;
+    float coyoteTimeCounter;
+
+    float jumpBufferTime = 0.2f;
+    float jumpBufferCounter;
+
+    // Bools
+    bool isJumping_;
+    public bool isFacingRight;
+
 
     EntityStats entityStats;
 
@@ -40,6 +51,20 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         Flip();
+        if(isGrounded()){
+            coyoteTimeCounter = coyoteTime;
+        }
+        else{
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+        
+        if(Input.GetButtonDown("Jump")){
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else{
+            jumpBufferCounter -= Time.deltaTime;
+        }
+
         Jump();
     }
 
@@ -59,10 +84,32 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if(Input.GetButtonDown("Jump") &&  isGrounded())
+        if(jumpBufferCounter > 0f &&  coyoteTimeCounter > 0f)
         {
-            rb.AddForce(new Vector2(rb.linearVelocity.x, JumpForce), ForceMode2D.Impulse);
+            jumpBufferCounter = 0f;
+            isJumping_ = true;
+            jumpTime = jumpStartTime;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpForce);
+            //rb.AddForce(new Vector2(rb.linearVelocity.x, JumpForce), ForceMode2D.Impulse);
             
+        }
+
+        if(Input.GetButton("Jump") && isJumping_)
+        {
+            if(jumpTime > 0)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpForce);
+                jumpTime -= Time.deltaTime;
+            }
+            else{
+                isJumping_ = false;
+                coyoteTimeCounter = 0f;
+            }
+        }
+
+        if(Input.GetButtonUp("Jump")){
+            isJumping_ = false;
+            coyoteTimeCounter = 0f;
         }
 
         if(rb.linearVelocity.y < 0 )
