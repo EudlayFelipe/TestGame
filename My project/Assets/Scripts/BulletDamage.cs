@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class BulletDamage : MonoBehaviour
 {
-    public float bullet_damage;
+    public float bullet_damage;  
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
+        
         Destroy(gameObject, .5f);
+        
     }
 
     // Update is called once per frame

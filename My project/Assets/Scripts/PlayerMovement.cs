@@ -7,14 +7,16 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Move")]
     public float move_speed;
-    private float horizontalMove;
-    private bool isFacingRight;
+    public float horizontalMove;
+    public bool isFacingRight;
 
 
     [Header("Jump")]
     public float JumpForce;
     public LayerMask groundLayer;
     public Transform groundCheck;
+    [SerializeField] private float fallMultiplier;
+    Vector2 vecGravity;
 
     EntityStats entityStats;
 
@@ -25,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        vecGravity = new Vector2(0, -Physics2D.gravity.y);
+
         rb = GetComponent<Rigidbody2D>();
         entityStats = gameObject.GetComponent<EntityStats>();
 
@@ -56,6 +60,12 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump") &&  isGrounded())
         {
             rb.AddForce(new Vector2(rb.linearVelocity.x, JumpForce), ForceMode2D.Impulse);
+            
+        }
+
+        if(rb.linearVelocity.y < 0 )
+        {
+            rb.linearVelocity -= vecGravity * fallMultiplier * Time.deltaTime;
         }
     }
 
