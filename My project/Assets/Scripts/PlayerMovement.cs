@@ -20,13 +20,17 @@ public class PlayerMovement : MonoBehaviour
     float jumpTime;
     float coyoteTime = 0.15f;
     float coyoteTimeCounter;
-
     float jumpBufferTime = 0.2f;
     float jumpBufferCounter;
 
-    // Bools
-    bool isJumping_;
+
+    [Header("SFX")]
+    public AudioClip jumpClip;
+    AudioSource jumpSound;
+
+    [Header("Bools")]        
     public bool isFacingRight;
+    bool isJumping_;
 
 
     EntityStats entityStats;
@@ -40,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         vecGravity = new Vector2(0, -Physics2D.gravity.y);
 
+        jumpSound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         entityStats = gameObject.GetComponent<EntityStats>();
 
@@ -90,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
             isJumping_ = true;
             jumpTime = jumpStartTime;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpForce);
+            
             //rb.AddForce(new Vector2(rb.linearVelocity.x, JumpForce), ForceMode2D.Impulse);
             
         }

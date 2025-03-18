@@ -11,8 +11,12 @@ public class EntityStats : MonoBehaviour
 
     public ParticleSystem blood_particle;
 
+    public AudioClip explosionSFX;
+    AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         hp = max_Hp;
     }
     
@@ -26,6 +30,7 @@ public class EntityStats : MonoBehaviour
         if(hp <= 0 )
         {
             ParticleSystem blood = Instantiate(blood_particle, transform.position, Quaternion.identity);
+            audioSource.PlayOneShot(explosionSFX);
             blood.Play();
             Destroy(blood, blood.main.duration);
             Destroy(this.gameObject);

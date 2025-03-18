@@ -15,6 +15,9 @@ public class Shoot : MonoBehaviour
     public float bullet_speed;
     public GameObject gun;
 
+    public AudioClip shootClip;
+    AudioSource shootSource;
+
     
 
 
@@ -24,10 +27,10 @@ public class Shoot : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        
+    {        
         player_stats = gameObject.GetComponent<EntityStats>();
         playerMovement = FindAnyObjectByType<PlayerMovement>();
+        shootSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -53,6 +56,7 @@ public class Shoot : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && can_shoot)
         {
+            shootSource.PlayOneShot(shootClip);
             GameObject bullet_Instance = Instantiate(bullet, spawnBullet.position, Quaternion.identity);
             bullet_Instance.GetComponent<BulletDamage>().bullet_damage = player_stats.attack_damage;
 

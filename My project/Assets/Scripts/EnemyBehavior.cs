@@ -5,7 +5,7 @@ public class EnemyBehavior : MonoBehaviour
 {
     public float enemy_speed;
 
-    GameObject player_object;
+    GameObject player_object;  
  
     
 
@@ -14,6 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         
         player_object = GameObject.FindGameObjectWithTag("Player");
+        
     }
 
     // Update is called once per frame
@@ -32,6 +33,14 @@ public class EnemyBehavior : MonoBehaviour
         }
         else{
             transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player"){
+            collision.gameObject.GetComponent<EntityStats>().hp -= gameObject.GetComponent<EntityStats>().attack_damage;
+            Destroy(gameObject);
         }
     }
 }
