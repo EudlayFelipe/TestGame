@@ -168,3 +168,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_damage: 5
   shootShakeData: {fileID: 11400000, guid: 336df1e6d41e3824da1b355c6800e464, type: 2}
+  groundColl_Particle: {fileID: 1295750627013509497, guid: e7dd981e6253de14790a6751dd65d962, type: 3}
