@@ -3,6 +3,7 @@ using System.IO.Compression;
 using Unity.Mathematics;
 using UnityEngine;
 
+
 public class Shoot : MonoBehaviour
 {
     EntityStats player_stats;
@@ -13,6 +14,8 @@ public class Shoot : MonoBehaviour
     public GameObject bullet;
     public float bullet_speed;
     public GameObject gun;
+
+    
 
 
     bool can_shoot = true;

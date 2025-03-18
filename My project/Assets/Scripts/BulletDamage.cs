@@ -1,8 +1,10 @@
 using UnityEngine;
-
+using FirstGearGames.SmoothCameraShaker;
 public class BulletDamage : MonoBehaviour
 {
     public float bullet_damage;  
+
+    public ShakeData shootShakeData;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +25,7 @@ public class BulletDamage : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy"){
             collision.gameObject.GetComponent<EntityStats>().hp -= bullet_damage;
+            CameraShakerHandler.Shake(shootShakeData);
             Destroy(gameObject);
         }
     }

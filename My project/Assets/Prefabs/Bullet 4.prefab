@@ -167,4 +167,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet_damage: 5
-  bullet_speed: 0
+  shootShakeData: {fileID: 11400000, guid: 336df1e6d41e3824da1b355c6800e464, type: 2}

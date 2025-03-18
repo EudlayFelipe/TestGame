@@ -43,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
         Jump();
     }
 
+    
+
     private bool isGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.transform.position, 0.2f, groundLayer);
