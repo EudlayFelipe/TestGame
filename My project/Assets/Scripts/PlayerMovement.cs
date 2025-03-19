@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("SFX")]
     public AudioClip jumpClip;
-    AudioSource jumpSound;
+    public AudioClip hitClip;
+    AudioSource audioSource;
 
     [Header("Bools")]        
     public bool isFacingRight;
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     {
         vecGravity = new Vector2(0, -Physics2D.gravity.y);
 
-        jumpSound = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         entityStats = gameObject.GetComponent<EntityStats>();
 
@@ -72,8 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
         Jump();
     }
-
-    
+  
 
     private bool isGrounded()
     {
@@ -125,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Flip()
+    
     {
         if(isFacingRight && horizontalMove < 0 || !isFacingRight && horizontalMove > 0)
         {
@@ -134,5 +135,12 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = ls;
         }
         
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy"){
+            audioSource.PlayOneShot(hitClip);
+        }
     }
 }
