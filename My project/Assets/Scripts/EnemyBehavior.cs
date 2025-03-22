@@ -39,7 +39,7 @@ public class EnemyBehavior : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player"){
-            collision.gameObject.GetComponent<EntityStats>().hp -= gameObject.GetComponent<EntityStats>().attack_damage;
+            collision.gameObject.GetComponent<EntityStats>().RemoveHp(gameObject.GetComponent<EntityStats>().attack_damage);
             Destroy(gameObject);
         }
     }

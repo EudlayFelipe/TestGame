@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6249906758198968021}
   - component: {fileID: 2108429800546418840}
-  - component: {fileID: 2171306151553143047}
+  - component: {fileID: 1294364871821492875}
   - component: {fileID: 9117231322633511856}
   - component: {fileID: 6523918447207700266}
   m_Layer: 0
-  m_Name: Bullet 4
+  m_Name: Bullet 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.51, y: 0.51, z: 0.51}
+  m_LocalScale: {x: 0.19979484, y: 0.19979484, z: 0.19979484}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1327499133, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -90,8 +90,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &2171306151553143047
-CapsuleCollider2D:
+--- !u!58 &1294364871821492875
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -125,8 +125,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.2777778, y: 0.5}
-  m_Direction: 0
+  m_Radius: 0.5
 --- !u!50 &9117231322633511856
 Rigidbody2D:
   serializedVersion: 5
@@ -167,6 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet_damage: 5
-  isPlayer: 1
+  isPlayer: 0
   shootShakeData: {fileID: 11400000, guid: 336df1e6d41e3824da1b355c6800e464, type: 2}
   groundColl_Particle: {fileID: 1295750627013509497, guid: e7dd981e6253de14790a6751dd65d962, type: 3}

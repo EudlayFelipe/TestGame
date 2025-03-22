@@ -3,14 +3,16 @@ using FirstGearGames.SmoothCameraShaker;
 public class BulletDamage : MonoBehaviour
 {
     public float bullet_damage;  
+    public bool isPlayer;
 
+    public float bullet_lifespan = 1;
     public ShakeData shootShakeData;
     public ParticleSystem groundColl_Particle;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {        
-        Destroy(gameObject, .5f);        
+        Destroy(gameObject, bullet_lifespan);        
     }
 
     // Update is called once per frame
@@ -21,8 +23,8 @@ public class BulletDamage : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy"){
-            collision.gameObject.GetComponent<EntityStats>().hp -= bullet_damage;
+        if((collision.gameObject.tag == "Enemy" && isPlayer) || collision.gameObject.tag == "Player" && !isPlayer){
+            collision.gameObject.GetComponent<EntityStats>().RemoveHp(bullet_damage);
             
             Destroy(gameObject);
         }

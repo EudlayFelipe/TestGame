@@ -15,11 +15,9 @@ public class Shoot : MonoBehaviour
     public float bullet_speed;
     public GameObject gun;
 
+    [Header("SFX")]
     public AudioClip shootClip;
     AudioSource shootSource;
-
-    
-
 
     bool can_shoot = true;
 
@@ -38,6 +36,10 @@ public class Shoot : MonoBehaviour
     {
         ShootBullet();
         RotateGun();
+
+        if(Input.GetKeyDown(KeyCode.G)){
+            InventoryManager.Instance.DiscardWeapon();
+        }
     }
 
     void RotateGun() // rotaciona a arma se o player estiver virado para esquerda ou para direita e dependendo da posição do mouse
@@ -59,11 +61,17 @@ public class Shoot : MonoBehaviour
             shootSource.PlayOneShot(shootClip);
             GameObject bullet_Instance = Instantiate(bullet, spawnBullet.position, Quaternion.identity);
             bullet_Instance.GetComponent<BulletDamage>().bullet_damage = player_stats.attack_damage;
+            bullet_Instance.GetComponent<BulletDamage>().bullet_lifespan = player_stats.attack_life;
 
             Vector2 bullet_direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             bullet_direction.Normalize();
 
-            bullet_Instance.GetComponent<Rigidbody2D>().AddForce(bullet_direction * bullet_speed, ForceMode2D.Impulse);
+
+            float rot_z = Mathf.Atan2(bullet_direction.y, bullet_direction.x) * Mathf.Rad2Deg;
+            bullet_Instance.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+
+
+            bullet_Instance.GetComponent<Rigidbody2D>().AddForce(bullet_direction * player_stats.attack_range, ForceMode2D.Impulse);
 
             can_shoot = false;
             cooldown_ = 0;            

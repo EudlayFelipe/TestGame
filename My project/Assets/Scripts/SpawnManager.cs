@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
     void SpawnEnemy(){
         foreach(GameObject sp in spawn_points)
         {
-            int RandomEnemy = Random.Range(0,2);
+            int RandomEnemy = Random.Range(0,enemies.Count);
             Instantiate(enemies[RandomEnemy], sp.transform.position, Quaternion.identity);
         }
     }  
