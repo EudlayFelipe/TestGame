@@ -203,10 +203,11 @@ MonoBehaviour:
   max_Hp: 5
   hp: 0
   base_speed: 5
+  attack_life: 0
   attack_speed: 2
   attack_damage: 5
   attack_range: 0
-  gold_carry: 2
+  gold_carry: 5
   blood_particle: {fileID: 9131220666848096375, guid: ffcc08f755f21ed4fb583ad7d5145360, type: 3}
 --- !u!114 &7100213743940816682
 MonoBehaviour:

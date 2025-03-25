@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41461d887ec55104eb51b86193e75872, type: 3}
   m_Name: Wave_1
   m_EditorClassIdentifier: 
-  n_monsters: 15
+  n_monsters: 50
   monster:
   - {fileID: 7784310461774455555, guid: 015d656f022709e458c9cdd0c66c4307, type: 3}
   - {fileID: 7784310461774455555, guid: acb325add6f93614cb70001740237a91, type: 3}
