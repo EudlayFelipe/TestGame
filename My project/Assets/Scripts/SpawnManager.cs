@@ -46,8 +46,8 @@ public class SpawnManager : MonoBehaviour
         if(canSpawnEnemies == true){SpawnEnemy();}
     }
 
-    void UpdateWaveHUD(){
-        wave_text.text = "Wave: " + wave_.ToString();
+    void UpdateWaveHUD(){        
+        wave_text.text = "Wave: " + (wave_ + 1).ToString();
     }
 
     public void StartNewWave()
@@ -65,9 +65,10 @@ public class SpawnManager : MonoBehaviour
             wave_++;
             UpdateWaveHUD();
             next_wave_button.SetActive(true);
+            return;
         }
 
-        if(n_monsters_spawned < waves_list[wave_].n_monsters && spawn_cooldown_count < 0)
+        if(n_monsters_spawned < waves_list[wave_].n_monsters && spawn_cooldown_count <= 0)
         {
             
 
@@ -80,7 +81,7 @@ public class SpawnManager : MonoBehaviour
 
 
                     Instantiate(enemyToSpawn, sp.transform.position, Quaternion.identity);
-                    n_monsters_spawned++;
+                    n_monsters_spawned++;                    
                     spawn_cooldown_count = spawn_cooldown;
                 }
                 

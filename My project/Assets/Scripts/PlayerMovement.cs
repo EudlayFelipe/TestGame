@@ -1,9 +1,13 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using FirstGearGames.SmoothCameraShaker;
+
 
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
+
+    public ShakeData cameraShake;
 
     [Header("Move")]
     public float move_speed;
@@ -140,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Enemy"){
-            
+            CameraShakerHandler.Shake(cameraShake);
             audioSource.PlayOneShot(hitClip);
         }
     }
