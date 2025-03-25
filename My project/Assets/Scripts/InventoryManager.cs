@@ -19,7 +19,7 @@ public class InventoryManager : MonoBehaviour
 
     [Header("Gold")]
     public int gold_coins;
-    public Text gold_text;
+    public TMP_Text gold_text;
 
     int actvive_slot;
 

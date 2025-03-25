@@ -40,6 +40,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player"){
             collision.gameObject.GetComponent<EntityStats>().RemoveHp(gameObject.GetComponent<EntityStats>().attack_damage);
+            SpawnManager.Instance.n_monsters_left--;
             Destroy(gameObject);
         }
     }

@@ -23,7 +23,7 @@ public class BulletDamage : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if((collision.gameObject.tag == "Enemy" && isPlayer) || collision.gameObject.tag == "Player" && !isPlayer){
+        if((collision.gameObject.tag == "Enemy" && isPlayer) || collision.gameObject.tag == "Player" && !isPlayer){            
             collision.gameObject.GetComponent<EntityStats>().RemoveHp(bullet_damage);
             
             Destroy(gameObject);
