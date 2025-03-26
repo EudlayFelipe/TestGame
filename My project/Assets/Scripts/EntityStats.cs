@@ -1,5 +1,8 @@
+using Unity.Mathematics;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
+using Random = UnityEngine.Random;
 public class EntityStats : MonoBehaviour
 {
     public float max_Hp;
@@ -47,6 +50,11 @@ public class EntityStats : MonoBehaviour
 
         // Change color
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+
+        GameObject new_pop_up =Instantiate(HUD.Instance.damagePopUp, this.gameObject.transform.position, Quaternion.identity);
+        new_pop_up.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f,1f), 5), ForceMode2D.Impulse);
+        new_pop_up.GetComponentInChildren<TextMeshProUGUI>().text = hp_to_remove.ToString();
+        Destroy(new_pop_up, 1f);
 
         hp -= hp_to_remove;
         Death();

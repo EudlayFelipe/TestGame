@@ -3,9 +3,20 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
+    public static HUD Instance {get; private set;}
     public Slider hp_Bar;
 
     EntityStats player_stats;
+
+    public GameObject damagePopUp;
+
+    void Awake()
+    {
+        if(Instance != null && Instance != this){
+            Destroy(this);
+        }
+        else{Instance = this;}
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
