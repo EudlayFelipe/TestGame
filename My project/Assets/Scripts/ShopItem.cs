@@ -17,14 +17,14 @@ public class ShopItem : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        Setup(w_);
+    {       
+        
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        Setup(w_);
     }
 
     public void Setup(Weapon w)

@@ -42,19 +42,6 @@ public class EntityStats : MonoBehaviour
         }
     }
 
-/*
-    IEnumerator DelayedDecrementAndDestroy()
-    {
-        ParticleSystem blood = Instantiate(blood_particle, transform.position, Quaternion.identity);
-        blood.Play();
-        Destroy(blood, blood.main.duration);
-
-        yield return new WaitForSeconds(0.1f); // Pequeno delay para garantir que a partícula seja iniciada corretamente
-    
-        SpawnManager.Instance.n_monsters_left--; // Agora decrementa depois do delay
-        Destroy(this.gameObject);
-    }
-*/
     
     public void RemoveHp(float hp_to_remove){
 
