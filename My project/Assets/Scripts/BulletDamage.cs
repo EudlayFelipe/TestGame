@@ -28,6 +28,10 @@ public class BulletDamage : MonoBehaviour
             
             Destroy(gameObject);
         }
+        
+        if(collision.gameObject.tag == "ColliderBullet"){
+            Destroy(this.gameObject);
+        }
 
         if(collision.gameObject.tag == "Ground"){
             Destroy(this.gameObject);

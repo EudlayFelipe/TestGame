@@ -1,11 +1,13 @@
 using JetBrains.Annotations;
 using UnityEngine;
 using FirstGearGames.SmoothCameraShaker;
+using System;
 
 
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
+    Animator animator_;
 
     public ShakeData cameraShake;
 
@@ -47,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        animator_ = gameObject.GetComponent<Animator>();
         vecGravity = new Vector2(0, -Physics2D.gravity.y);
 
         audioSource = GetComponent<AudioSource>();
@@ -89,6 +92,8 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal");
 
         rb.linearVelocity = new Vector3(horizontalMove * move_speed, rb.linearVelocity.y);
+
+        animator_.SetFloat("xVelocity", Math.Abs(rb.linearVelocity.x));
     }
 
     void Jump()
