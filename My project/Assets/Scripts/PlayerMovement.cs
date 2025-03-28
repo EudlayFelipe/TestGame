@@ -148,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy"){
+        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "FlyingEnemy"){
             CameraShakerHandler.Shake(cameraShake);
             audioSource.PlayOneShot(hitClip);
         }

@@ -584,7 +584,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -493647738, guid: 3bcb7877229a5334da528f2f0872b5c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -679,7 +679,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 6
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -708,9 +708,9 @@ MonoBehaviour:
   base_speed: 5
   attack_life: 0
   attack_speed: 2
-  attack_damage: 5
+  attack_damage: 1.4
   attack_range: 0
-  gold_carry: 5
+  gold_carry: 2
   blood_particle: {fileID: 9131220666848096375, guid: ffcc08f755f21ed4fb583ad7d5145360, type: 3}
 --- !u!114 &7100213743940816682
 MonoBehaviour:

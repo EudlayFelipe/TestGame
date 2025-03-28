@@ -27,7 +27,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         Vector3 targetPos = new Vector3(player_object.transform.position.x, transform.position.y, transform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPos, enemy_speed * Time.deltaTime) ;
-
+        
         if(player_object.transform.position.x > transform.position.x){
             transform.localScale = new Vector3(1, 1, 1);
         }

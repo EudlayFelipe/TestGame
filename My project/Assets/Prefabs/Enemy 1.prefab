@@ -394,7 +394,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1544975445, guid: d33598d781682e049a53a0a13104ef29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -462,7 +462,7 @@ Animator:
   m_GameObject: {fileID: 7784310461774455555}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 696e30eca14b61b4f93313af2e06714f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -489,7 +489,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 6
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -518,9 +518,9 @@ MonoBehaviour:
   base_speed: 5
   attack_life: 2
   attack_speed: 2
-  attack_damage: 10
+  attack_damage: 2.3
   attack_range: 0
-  gold_carry: 8
+  gold_carry: 2
   blood_particle: {fileID: 9131220666848096375, guid: ffcc08f755f21ed4fb583ad7d5145360, type: 3}
 --- !u!114 &7100213743940816682
 MonoBehaviour:
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5debbc7bfce12c42b3334a10d18b268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_speed: 2.2
+  enemy_speed: 5
 --- !u!82 &-9151613078480344734
 AudioSource:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ TagManager:
   - Slot
   - ShopItem
   - ColliderBullet
+  - FlyingEnemy
   layers:
   - Default
   - TransparentFX

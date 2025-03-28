@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92f739f4dfc6754b969f548d2afc845, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  weapon_damage: 4
+  weapon_damage: 3
   weapon_speed: 1
   weapon_life: 50
   weapon_range: 10
-  weapon_icon: {fileID: -353751291, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  weapon_icon: {fileID: -3332579723040664743, guid: 2878c836da7c8c14c88a482b5249ce4d, type: 3}
   weapon_name: Pistol
   weapon_value: 0

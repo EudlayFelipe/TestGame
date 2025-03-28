@@ -14,21 +14,38 @@ public class RangedBehavior : MonoBehaviour
 
     EntityStats ranged_stats;
 
+    Rigidbody2D rb_ranged;
+
+    public float fixedYPosition;
+    public float enemy_speed;
+    private Transform player;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         shootSource = GetComponent<AudioSource>();
         player_obj = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         ranged_stats = GetComponent<EntityStats>();
+        rb_ranged = GetComponent<Rigidbody2D>();
+        fixedYPosition = transform.position.y;
     }
 
     // Update is called once per frame
-     void Update()
+    void FixedUpdate()
     {
         Shoot();            
+        FollowPlayer();       
     }
 
-   
+    void FollowPlayer()
+    {
+        if (player != null)
+        {
+            Vector3 targetPosition = new Vector3(player.position.x, fixedYPosition, transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemy_speed * Time.deltaTime);
+        }
+    }
 
     void Shoot() // atira
     {
@@ -59,6 +76,15 @@ public class RangedBehavior : MonoBehaviour
         }
         else{
             cooldown_ += Time.deltaTime;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player"){
+            collision.gameObject.GetComponent<EntityStats>().RemoveHp(gameObject.GetComponent<EntityStats>().attack_damage);
+            SpawnManager.Instance.n_monsters_left--;
+            Destroy(gameObject);
         }
     }
 
