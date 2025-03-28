@@ -1388,7 +1388,7 @@ MonoBehaviour:
   audioSources:
   - {fileID: 336195657}
   audio_slider: {fileID: 1250695556}
-  resolucion_dropdown: {fileID: 0}
+  resolucion_dropdown: {fileID: 130344577}
 --- !u!4 &281842128
 Transform:
   m_ObjectHideFlags: 0
@@ -1483,7 +1483,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -2535,7 +2535,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -155058199, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

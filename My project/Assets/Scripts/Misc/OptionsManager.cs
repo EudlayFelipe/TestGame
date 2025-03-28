@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class OptionsManager : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class OptionsManager : MonoBehaviour
     public GameObject options_obj;
     public List<AudioSource> audioSources;
     public Slider audio_slider;
-    public Dropdown resolucion_dropdown;
+    public TMP_Dropdown resolucion_dropdown;
 
     void Awake()
     {
