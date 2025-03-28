@@ -15,7 +15,7 @@ MonoBehaviour:
   weapon_damage: 4
   weapon_speed: 1
   weapon_life: 50
-  weapon_range: 50
+  weapon_range: 10
   weapon_icon: {fileID: -353751291, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   weapon_name: Pistol
   weapon_value: 0

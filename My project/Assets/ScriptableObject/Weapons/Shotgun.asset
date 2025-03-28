@@ -15,7 +15,7 @@ MonoBehaviour:
   weapon_damage: 6
   weapon_speed: 1.2
   weapon_life: 40
-  weapon_range: 40
+  weapon_range: 14
   weapon_icon: {fileID: 1772703093, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   weapon_name: ShotGun
   weapon_value: 200

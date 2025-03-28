@@ -15,7 +15,7 @@ MonoBehaviour:
   weapon_damage: 20
   weapon_speed: 0.08
   weapon_life: 100
-  weapon_range: 100
+  weapon_range: 50
   weapon_icon: {fileID: -144335857, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   weapon_name: MachineGun
   weapon_value: 40
