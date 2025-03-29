@@ -17,6 +17,7 @@ public class Shoot : MonoBehaviour
 
     [Header("SFX")]
     public AudioClip shootClip;
+    public float weapon_sound_pitch;
     AudioSource shootSource;
 
     bool can_shoot = true;
@@ -58,6 +59,7 @@ public class Shoot : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && can_shoot)
         {
+            shootSource.pitch = weapon_sound_pitch;
             shootSource.PlayOneShot(shootClip);
             GameObject bullet_Instance = Instantiate(bullet, spawnBullet.position, Quaternion.identity);
             bullet_Instance.GetComponent<BulletDamage>().bullet_damage = player_stats.attack_damage;

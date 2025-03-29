@@ -39,11 +39,14 @@ public class PlayerMovement : MonoBehaviour
     public bool isFacingRight;
     bool isJumping_;
 
+    public ParticleSystem dust_;
+
 
     EntityStats entityStats;
 
     void Awake()
     {
+        Time.timeScale = 1f;
         isFacingRight = true;
     }
 
@@ -103,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
             jumpBufferCounter = 0f;
             isJumping_ = true;
             jumpTime = jumpStartTime;
+            dust_.Play();
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpForce);
             
             //rb.AddForce(new Vector2(rb.linearVelocity.x, JumpForce), ForceMode2D.Impulse);
@@ -142,8 +146,10 @@ public class PlayerMovement : MonoBehaviour
             Vector3 ls = transform.localScale;
             ls.x *= -1;
             transform.localScale = ls;
-        }
-        
+            if(isGrounded()){
+                dust_.Play();
+            }
+        }        
     }
 
     void OnCollisionEnter2D(Collision2D collision)

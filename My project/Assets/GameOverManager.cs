@@ -16,9 +16,12 @@ public class GameOverManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(player.hp <= 0){
-        Time.timeScale = 0;
+       VerifyHealth();
+    }
+    void VerifyHealth(){
+        if(player.hp <= 0){        
         panel_go.SetActive(true);
+        Time.timeScale = 0.0001f;
        }
     }
 }

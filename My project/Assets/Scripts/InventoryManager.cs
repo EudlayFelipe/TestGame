@@ -93,6 +93,8 @@ public class InventoryManager : MonoBehaviour
         player_stats.attack_speed = selected_weapon.weapon_speed;
         player_stats.attack_range = selected_weapon.weapon_range;
         player_stats.attack_life = selected_weapon.weapon_life;
+        player_stats.gameObject.GetComponent<Shoot>().shootClip = selected_weapon.weapon_sound;
+        player_stats.gameObject.GetComponent<Shoot>().weapon_sound_pitch = selected_weapon.weapon_sound_pitch;
 
         selected_slot = hotKey_;
         RefreshInventory();
