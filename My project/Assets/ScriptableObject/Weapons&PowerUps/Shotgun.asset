@@ -16,7 +16,7 @@ MonoBehaviour:
   weapon_speed: 0.5
   weapon_life: 40
   weapon_range: 14
-  weapon_icon: {fileID: -4023814058207377838, guid: 634ecd2bd73128e40af9adab22af234d, type: 3}
+  weapon_icon: {fileID: 6713100427805081832, guid: b93ffc9be54214b4fae76ec1c054f60d, type: 3}
   weapon_name: ShotGun
   weapon_sound: {fileID: 8300000, guid: 14f24de2a9a70154e96297de25e2184c, type: 3}
   weapon_sound_pitch: 1

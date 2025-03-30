@@ -4,88 +4,106 @@ public class RangedBehavior : MonoBehaviour
 {
     public GameObject enemy_projectile;
 
-    bool can_shoot = true;
-    float cooldown_;
+    private bool can_shoot = true;
+    private float lastShotTime;
 
-    GameObject player_obj;
-
-    AudioSource shootSource;
-    AudioClip shootClip;
-
-    EntityStats ranged_stats;
-
-    Rigidbody2D rb_ranged;
-
-    public float fixedYPosition;
-    public float enemy_speed;
+    private GameObject player_obj;
     private Transform player;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private AudioSource shootSource;
+    public AudioClip shootClip;
+
+    private EntityStats ranged_stats;
+    private Rigidbody2D rb_ranged;
+
+    public float enemy_speed;
+    public float groundDetectionDistance = 1.0f; // Distância para detectar o chão
+    public Transform bullet_spawn_ranged;
+    public LayerMask groundLayer; // Camada do chão
+
     void Start()
     {
         shootSource = GetComponent<AudioSource>();
         player_obj = GameObject.FindGameObjectWithTag("Player");
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = player_obj?.transform;
+
         ranged_stats = GetComponent<EntityStats>();
         rb_ranged = GetComponent<Rigidbody2D>();
-        fixedYPosition = transform.position.y;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        Shoot();            
-        FollowPlayer();       
+        FollowPlayer();
+        FlipDirection();
+        Shoot();
     }
 
     void FollowPlayer()
     {
         if (player != null)
         {
-            Vector3 targetPosition = new Vector3(player.position.x, fixedYPosition, transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemy_speed * Time.deltaTime);
+            float direction = player.position.x > transform.position.x ? 1f : -1f;
+            Vector2 moveForce = new Vector2(direction * enemy_speed, rb_ranged.linearVelocity.y);
+
+            // Verifica se há chão à frente para evitar cair em buracos
+            RaycastHit2D groundInfo = Physics2D.Raycast(transform.position + new Vector3(direction * 0.5f, 0, 0), Vector2.down, groundDetectionDistance, groundLayer);
+            
+            if (groundInfo.collider != null)
+            {
+                rb_ranged.linearVelocity = moveForce;
+            }
         }
     }
 
-    void Shoot() // atira
+    void FlipDirection()
     {
-        if(can_shoot)
+        if (player != null)
         {
-            shootSource.PlayOneShot(shootClip);
-            GameObject enemy_projectile_Instance = Instantiate(enemy_projectile, transform.position, Quaternion.identity);
-            enemy_projectile_Instance.GetComponent<BulletDamage>().bullet_damage = ranged_stats.attack_damage;
-            enemy_projectile_Instance.GetComponent<BulletDamage>().bullet_lifespan = ranged_stats.attack_life;
+            if (player.position.x > transform.position.x)
+                transform.localScale = new Vector3(1, 1, 1);
+            else
+                transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
 
-            Vector2 enemy_projectile_direction = player_obj.transform.position - transform.position;
-            enemy_projectile_direction.Normalize();
+    void Shoot()
+    {
+        if (can_shoot && player != null)
+        {
+            if (shootClip && shootSource)
+                shootSource.PlayOneShot(shootClip);
 
-            enemy_projectile_Instance.GetComponent<Rigidbody2D>().AddForce(enemy_projectile_direction * ranged_stats.attack_range, ForceMode2D.Impulse);
+            GameObject projectileInstance = Instantiate(enemy_projectile, bullet_spawn_ranged.position, Quaternion.identity);
+            BulletDamage bullet = projectileInstance.GetComponent<BulletDamage>();
+
+            bullet.bullet_damage = ranged_stats.attack_damage;
+            bullet.bullet_lifespan = ranged_stats.attack_life;
+
+            Vector2 direction = (player.position - bullet_spawn_ranged.position).normalized;
+            projectileInstance.GetComponent<Rigidbody2D>().linearVelocity = direction * ranged_stats.attack_range;
 
             can_shoot = false;
-            cooldown_ = 0;            
+            lastShotTime = Time.time;
         }
 
-        Cooldown();
+        CheckCooldown();
     }
 
-    void Cooldown()
+    void CheckCooldown()
     {
-        if(cooldown_ > ranged_stats.attack_speed && !can_shoot)
-        {   
+        if (!can_shoot && Time.time - lastShotTime >= ranged_stats.attack_speed)
+        {
             can_shoot = true;
-        }
-        else{
-            cooldown_ += Time.deltaTime;
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player"){
-            collision.gameObject.GetComponent<EntityStats>().RemoveHp(gameObject.GetComponent<EntityStats>().attack_damage);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<EntityStats>().RemoveHp(ranged_stats.attack_damage);
             SpawnManager.Instance.n_monsters_left--;
             Destroy(gameObject);
         }
     }
-
 }

@@ -16,7 +16,7 @@ MonoBehaviour:
   weapon_speed: 0.7
   weapon_life: 50
   weapon_range: 10
-  weapon_icon: {fileID: -3332579723040664743, guid: 2878c836da7c8c14c88a482b5249ce4d, type: 3}
+  weapon_icon: {fileID: 3487208955017475832, guid: 1ea17197099dddd48b3b99ab67102671, type: 3}
   weapon_name: Pistol
   weapon_sound: {fileID: 8300000, guid: 14f24de2a9a70154e96297de25e2184c, type: 3}
   weapon_sound_pitch: 1

@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
         
-        if(Input.GetButtonDown("Jump")){
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
             jumpBufferCounter = jumpBufferTime;
         }
         else{
@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
-        if(Input.GetButton("Jump") && isJumping_)
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && isJumping_)
         {
             if(jumpTime > 0)
             {

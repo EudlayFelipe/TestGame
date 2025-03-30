@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6427436833023035540}
   - component: {fileID: 6683318856263936288}
-  - component: {fileID: 4830251548027743725}
+  - component: {fileID: -5923438778367184298}
   - component: {fileID: 5493762996279834072}
   - component: {fileID: 504382019011969009}
   - component: {fileID: 31543451248097913}
@@ -33,10 +33,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.2017007, y: -3.5446272, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.200875, y: 1.200875, z: 1.200875}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1356837235456827701}
+  - {fileID: 5147658603628772958}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6683318856263936288
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 172626504, guid: c4d2ccab0c2ad7e47853b6e31a7ac7c2, type: 3}
+  m_Sprite: {fileID: 4857198324396285416, guid: cde6d97dc098a614e876a03673a13813, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,8 +95,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4830251548027743725
-BoxCollider2D:
+--- !u!70 &-5923438778367184298
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -128,18 +129,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.054515243, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.7213671, y: 1}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.0040444545, y: -0.12942421}
+  m_Size: {x: 0.641387, y: 0.7411517}
+  m_Direction: 0
 --- !u!50 &5493762996279834072
 Rigidbody2D:
   serializedVersion: 5
@@ -155,7 +147,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -201,8 +193,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_projectile: {fileID: 2173355783425389767, guid: 6ddbba9af28e5934eb0eb44f64703271, type: 3}
-  fixedYPosition: 3.17
-  enemy_speed: 1.3
+  shootClip: {fileID: 8300000, guid: d1bef3102d08ba944ac7bcac65733a26, type: 3}
+  enemy_speed: 0.8
+  bullet_spawn_ranged: {fileID: 5147658603628772958}
 --- !u!82 &8629388057398404425
 AudioSource:
   m_ObjectHideFlags: 0
@@ -217,7 +210,7 @@ AudioSource:
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.87
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -322,6 +315,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &3052333972692157650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5147658603628772958}
+  m_Layer: 0
+  m_Name: BulletSpawnRanged
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5147658603628772958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052333972692157650}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.167, y: -0.19, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6427436833023035540}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5732606023877957624
 GameObject:
   m_ObjectHideFlags: 0

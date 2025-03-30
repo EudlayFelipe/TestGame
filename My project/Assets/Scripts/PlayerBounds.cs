@@ -10,7 +10,7 @@ public class PlayerBounds : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        playerHalfWidth = GetComponent<SpriteRenderer>().bounds.extents.x; // metade da largura do Sprite
+        playerHalfWidth = GetComponent<SpriteRenderer>().bounds.extents.x / 8; // metade da largura do Sprite
     }
 
     // Update is called once per frame

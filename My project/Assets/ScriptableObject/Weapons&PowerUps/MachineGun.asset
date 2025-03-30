@@ -16,7 +16,7 @@ MonoBehaviour:
   weapon_speed: 0.1
   weapon_life: 100
   weapon_range: 50
-  weapon_icon: {fileID: -2129443864044190263, guid: ae956536c3c7dd643ba499d1fe45df66, type: 3}
+  weapon_icon: {fileID: 1417241895680909534, guid: 09d4524f8d71d4f429c1ebd8ef609dc8, type: 3}
   weapon_name: MachineGun
   weapon_sound: {fileID: 8300000, guid: 14f24de2a9a70154e96297de25e2184c, type: 3}
   weapon_sound_pitch: 1
